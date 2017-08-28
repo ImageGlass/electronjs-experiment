@@ -1,0 +1,22 @@
+{
+  "name": "imageglass-photos",
+  "version": "0.0.1",
+  "description": "A modern, versatile photo viewer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/imageglass/imageglass-photos",
+  "keywords": [
+    "ImageGlass Photos",
+    "fast",
+    "image",
+    "viewer",
+    "open source"
+  ],
+  "author": "Duong Dieu Phap",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}
