@@ -4,7 +4,8 @@
   "description": "A modern, versatile photo viewer",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "watch": "watchify app/app.js -t babelify -o public/js/bundle.js --debug --verbose"
   },
   "repository": "https://github.com/imageglass/imageglass-photos",
   "keywords": [
@@ -17,6 +18,16 @@
   "author": "Duong Dieu Phap",
   "license": "MIT",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "browserify": "^14.4.0",
+    "electron": "~1.6.2",
+    "axios": "^0.16.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "classnames": "^2.2.5",
+    "jquery": "^3.2.1",
+    "react": "^15.6.1",
+    "react-autocomplete": "^1.7.1",
+    "react-dom": "^15.6.1"
   }
 }
