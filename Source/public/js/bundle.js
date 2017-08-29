@@ -9799,17 +9799,14 @@ var App = function (_React$Component) {
   }
 
   _createClass(App, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
-        "Hello World!",
-        _react2.default.createElement(
-          "a",
-          { href: "https://willowtreeapps.com/careers" },
-          "Come work with me."
-        )
+        'Hello World!',
+        _react2.default.createElement('br', null),
+        'React app'
       );
     }
   }]);
