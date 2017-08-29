@@ -7,6 +7,3 @@ html, body, input, textarea, button, select {
 
 *, *::before, *::after {
   box-sizing: inherit; }
-
-.example h1 {
-  color: green; }
