@@ -25,6 +25,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.5",
     "electron": "~1.6.2",
+    "extract-text-webpack-plugin": "^3.0.0",
     "node-sass": "^4.5.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

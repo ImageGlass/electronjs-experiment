@@ -1,6 +1,7 @@
 import React from 'react';
+import style from './main.scss';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (<div>
       Hello World!
@@ -10,3 +11,5 @@ export default class App extends React.Component {
     </div>);
   }
 }
+
+export default App
