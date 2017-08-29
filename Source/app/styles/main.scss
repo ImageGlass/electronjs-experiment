@@ -8,6 +8,9 @@ html, body, input, textarea, button, select {
 *, *::before, *::after {
     box-sizing: inherit;
 }
+body {
+    margin: 0;
+}
 
 
 
