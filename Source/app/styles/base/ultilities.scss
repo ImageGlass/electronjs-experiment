@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+
+// ***********************************
+// * MARGINS & PADDINGS
+// ***********************************
+$property-list: (m, margin), 
+                (p, padding);
+$width-list: (0, 0),
+            (auto, auto),
+            (xs, $w-xs), 
+            (s, $w-s), 
+            (m, $w-m), 
+            (l, $w-l), 
+            (xl, $w-xl);
+
+@each $s, $size in $width-list {
+    @each $p, $property in $property-list {
+    
+        .#{$p}-#{$s} {
+            #{$property}: $size;
+        }
+        .#{$p}-t-#{$s} {
+            #{$property}-top: $size;
+        }
+        .#{$p}-b-#{$s} {
+            #{$property}-bottom: $size;
+        }
+        .#{$p}-l-#{$s} {
+            #{$property}-left: $size;
+        }
+        .#{$p}-r-#{$s} {
+            #{$property}-right: $size;
+        }
+
+        .#{$p}-t-b-#{$s} {
+            #{$property}-top: $size;
+            #{$property}-bottom: $size;
+        }
+        .#{$p}-l-r-#{$s} {
+            #{$property}-left: $size;
+            #{$property}-right: $size;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

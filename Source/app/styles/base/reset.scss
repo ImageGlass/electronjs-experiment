@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+
+
+html {
+    box-sizing: border-box;
+}
+html, input, textarea, button, select {
+    font-family: $font-family;
+    font-size: $font-size;
+    color: $color-text;
+    font-weight: $font-weight-light;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+}
+
+
+
+// ***********************************
+// * GLOBAL SCROLLBAR 
+// ***********************************
+::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 0.7rem;
+}
+*::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0.035);
+    border-radius: 0.7rem;
+}
+*:hover::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0.08);
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 0.7rem;
+    background: rgba(0,0,0,0.24); 
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.2); 
+}
+*::-webkit-scrollbar-thumb:active {
+    background: rgba(0,0,0,0.3); 
+}
+
+
+// ***********************************
+// * LIST 
+// ***********************************
+ul, ol {
+    list-style: none;
+}
+ul, ol, ul li {
+    margin: 0;
+    padding: 0;
+}
+
+
+// ***********************************
+// * HYPERLINK 
+// ***********************************
+a {
+    -webkit-app-region: no-drag;
+}
+
+
+// ***********************************
+// * TABLE 
+// ***********************************
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+

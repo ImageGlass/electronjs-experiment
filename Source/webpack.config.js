@@ -17,7 +17,7 @@ module.exports = {
       ]
     },
     plugins: [
-        new ExtractTextPlugin('./public/css/main.css', {
+        new ExtractTextPlugin('./public/css/app.css', {
             allChunks: true
         })
     ]
