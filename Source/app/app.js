@@ -11,7 +11,7 @@ import Viewer from "./frmMain/components/viewer.component"
 
 class App extends React.Component {
   render() {
-    return (<div>
+    return (<div className="app-root">
       <Toolbar />
       <Viewer />
       <ThumbnailBar />
