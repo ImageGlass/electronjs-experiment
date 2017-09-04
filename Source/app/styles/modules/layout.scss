@@ -7,7 +7,7 @@
 .app-root {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: $h-toolbar $h-viewer $h-thumbnail-bar $h-control-bar;
     grid-template-columns: auto;
     grid-template-areas: 
     "toolbar toolbar"
