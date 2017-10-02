@@ -6,6 +6,7 @@ module.exports = {
     output: {
       filename: './public/js/bundle.js'
     },
+    target: "electron-main",
     module: {
       loaders: [
         { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },

@@ -4,7 +4,15 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// disable zoom in/out functionality in app
+const { webFrame } = require('electron');
+webFrame.setVisualZoomLevelLimits(1, 1);
+webFrame.setLayoutZoomLevelLimits(0, 0);
+
+
 
 import App from './app/app';
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+
