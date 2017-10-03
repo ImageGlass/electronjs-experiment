@@ -13,7 +13,7 @@ module.exports = {
         { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
         {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+          loader: ExtractTextPlugin.extract('css-loader?url=false!sass-loader?sourceMap')
         }
       ]
     },

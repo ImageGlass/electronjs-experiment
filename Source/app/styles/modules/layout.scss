@@ -1,19 +1,27 @@
 @charset "UTF-8";
 
-
+body {
+    overflow: hidden;
+}
 #app {
     min-height: 100vh;
+    user-select: none;
+    cursor: default;
 }
 .app-root {
     min-height: 100vh;
     display: grid;
-    grid-template-rows: $h-toolbar $h-viewer $h-thumbnail-bar $h-control-bar;
+    grid-template-rows: $h-window-title $h-toolbar $h-viewer $h-thumbnail-bar $h-control-bar;
     grid-template-columns: auto;
     grid-template-areas: 
+    "window-title window-title"
     "toolbar toolbar"
     "viewer viewer"
-    "thumbnail-bar thumbnail-bar "
+    "thumbnail-bar thumbnail-bar"
     "control-bar control-bar";
+}
+.window-title {
+    grid-area: window-title;
 }
 .toolbar {
     grid-area: toolbar;
