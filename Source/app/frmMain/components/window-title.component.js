@@ -9,9 +9,11 @@ class WindowTitle extends React.Component {
                 <div className="title-text">
                     <span>ImageGlass</span>
                     <span>99/2031 files</span>
+                    <span>Sunrise-on-Ha-Long-Bay.png</span>
                     <span>100%</span>
-                    <span>PNG</span>
-                    <span>D:\Photos\Wallpapers\Vietnam\Sunrise-on-Ha-Long-Bay.png</span>
+                    <span>1920 x 900 px</span>
+                    <span>3.25 MB</span>
+                    
                 </div>
             </div>
             <div className="title-control minimize"></div>
