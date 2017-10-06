@@ -2,7 +2,7 @@
 
 
 $title-left-padding: 1rem;
-$logo-width: 1.125rem;
+$logo-width: 1.2rem;
 $logo-right-margin: 0.5rem;
 $title-control-width: 3.5rem;
 
@@ -51,19 +51,26 @@ $title-control-width: 3.5rem;
             border-radius: 1px;
         }
 
-        &.close::before {
-            border: 0;
-            height: 0.1rem;
-            background-color: $color-text;
-            transform: rotate(45deg);
+        &.close {
+            &:hover {
+                background-color: #c75050;
+            }
+
+            &::before {
+                border: 0;
+                height: 0.1rem;
+                background-color: $color-text;
+                transform: rotate(45deg);
+            }
+
+            &::after {
+                border: 0;
+                height: 0.1rem;
+                background-color: $color-text;
+                transform: rotate(-45deg);
+            }
         }
 
-        &.close::after {
-            border: 0;
-            height: 0.1rem;
-            background-color: $color-text;
-            transform: rotate(-45deg);
-        }
         
 
     }

@@ -5,8 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "NODE_ENV=production webpack --watch --optimize-minimize --progress",
-    "dev_win": "set NODE_ENV=production & webpack --watch --optimize-minimize --progress"
+    "dev": "set NODE_ENV=production & webpack --watch --optimize-minimize --progress"
   },
   "repository": "https://github.com/imageglass/imageglass-photos",
   "keywords": [

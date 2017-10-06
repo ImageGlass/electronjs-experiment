@@ -14,10 +14,11 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1300, 
-    height: 750,
+    width: 1200, 
+    height: 700,
     frame: false
   })
+  
 
   // Remove default menu of app
   mainWindow.setMenu(null);
