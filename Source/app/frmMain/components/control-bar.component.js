@@ -5,7 +5,7 @@ class ControlBar extends React.Component {
     render() {
 
         return (<div className="control-bar">
-            This is control bar
+            
         </div>
         )
 

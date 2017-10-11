@@ -40,6 +40,10 @@ $title-control-width: 3.5rem;
             margin: auto;
             transition: all 200ms ease;
         }
+        &.close:hover::before,
+        &.close:hover::after {
+            background-color: #fff;
+        }
 
         &.minimize::before {
             border-top: 0;
