@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Style from "./styles/app.scss"
+import Style from "../styles/app.scss"
 
 // import frmMain components
 import WindowTitle from "./frmMain/components/window-title.component"

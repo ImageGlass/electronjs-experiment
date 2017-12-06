@@ -1,6 +1,8 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
+const ipcMain = electron.ipcMain
+
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -11,14 +13,14 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		width: 1200, 
+		width: 1200,
 		height: 700,
 		frame: false
 	})
-	
+
 
 	// Remove default menu of app
 	mainWindow.setMenu(null);
@@ -40,7 +42,20 @@ function createWindow () {
 		// when you should delete the corresponding element.
 		mainWindow = null
 	})
+
+	mainWindow.on("maximize", function () {
+		mainWindow.webContents.send("mainWindow_maximize");
+	})
+
+	mainWindow.on("unmaximize", function () {
+		mainWindow.webContents.send("mainWindow_unmaximize");
+	})
+
+	mainWindow.on("restore", function () {
+		mainWindow.webContents.send("mainWindow_restore");
+	})
 }
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -66,3 +81,7 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+
+
