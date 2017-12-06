@@ -40,7 +40,7 @@ class WindowTitle extends React.Component {
 
 	handleRestoreClick(e) {
 		e.preventDefault()
-		remote.BrowserWindow.getFocusedWindow().restore()
+		remote.BrowserWindow.getFocusedWindow().unmaximize();
 		this.setState({
 			isMaximized: false
 		})
