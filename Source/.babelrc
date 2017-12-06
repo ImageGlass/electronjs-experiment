@@ -1,5 +1,10 @@
 {
-    "presets":[
-        "es2015", "react"
-    ]
+	"presets":[
+		"react",
+		["env", {
+			"target": {
+				"node": "current"
+			}
+		}]
+	]
 }
