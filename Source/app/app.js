@@ -11,19 +11,19 @@ import Viewer from "./frmMain/components/viewer.component"
 
 
 class App extends React.Component {
-  render() {
-    return (<div className="app-root">
-      <WindowTitle />
-      <Toolbar />
-      <Viewer />
-      <ThumbnailBar />
-      <ControlBar />
-    </div>);
-  }
+	render() {
+		return (<div className="app-root">
+			<WindowTitle />
+			<Toolbar />
+			<Viewer />
+			<ThumbnailBar />
+			<ControlBar />
+		</div>);
+	}
 }
 
 ReactDOM.render(
-  <App />, document.getElementById("app")
+	<App />, document.getElementById("app")
 )
 
 export default App

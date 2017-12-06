@@ -5,121 +5,123 @@ $title-left-padding: 1rem;
 $logo-width: 1.2rem;
 $logo-right-margin: 0.5rem;
 $title-control-width: 3.5rem;
+$margin-for-resizing: 2px;
 
 .window-title {
-    -webkit-app-region: drag;
-    margin:  0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
+	margin:  0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	justify-content: flex-end;
 
-    > .title-control {
-        padding: 1rem;
-        position: relative;
-        width: $title-control-width;
-        transition: all 200ms ease;
-        flex: 0 0 auto;
+	> .title-control {
+		padding: 1rem;
+		position: relative;
+		width: $title-control-width;
+		transition: all 200ms ease;
+		flex: 0 0 auto;
 
-        &:hover {
-            background-color: rgba(0,0,0,0.05);
-        }
+		&:hover {
+			background-color: rgba(0,0,0,0.05);
+		}
 
-        &::before,
-        &.close::after {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 1rem;
-            height: 1rem;
-            border: 0.1rem solid $color-text;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: auto;
-            transition: all 200ms ease;
-        }
-        &.close:hover::before,
-        &.close:hover::after {
-            background-color: #fff;
-        }
+		&::before,
+		&.close::after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 1rem;
+			height: 1rem;
+			border: 0.1rem solid $color-text;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			transition: all 200ms ease;
+		}
+		&.close:hover::before,
+		&.close:hover::after {
+			background-color: #fff;
+		}
 
-        &.minimize::before {
-            border-top: 0;
-            border-left: 0;
-            border-right: 0;
-        }
+		&.minimize::before {
+			border-top: 0;
+			border-left: 0;
+			border-right: 0;
+		}
 
-        &.maximize::before {
-            border-radius: 1px;
-        }
+		&.maximize::before {
+			border-radius: 1px;
+		}
 
-        &.close {
-            &:hover {
-                background-color: #c75050;
-            }
+		&.close {
+			&:hover {
+				background-color: #c75050;
+			}
 
-            &::before {
-                border: 0;
-                height: 0.1rem;
-                background-color: $color-text;
-                transform: rotate(45deg);
-            }
+			&::before {
+				border: 0;
+				height: 0.1rem;
+				background-color: $color-text;
+				transform: rotate(45deg);
+			}
 
-            &::after {
-                border: 0;
-                height: 0.1rem;
-                background-color: $color-text;
-                transform: rotate(-45deg);
-            }
-        }
+			&::after {
+				border: 0;
+				height: 0.1rem;
+				background-color: $color-text;
+				transform: rotate(-45deg);
+			}
+		}
 
-        
+		
 
-    }
+	}
 
-    > .title {
-        margin-right: auto;
-        position: relative;
-        display: flex;
-        flex: 1 1 auto;
-        padding-left: $title-left-padding;
-        align-items: center;
-        font-weight: 400;
+	> .title {
+		-webkit-app-region: drag;
+		margin-right: auto;
+		position: relative;
+		display: flex;
+		flex: 1 1 auto;
+		padding-left: calc(#{$title-left-padding} - #{$margin-for-resizing});
+		align-items: center;
+		font-weight: 400;
+		margin: $margin-for-resizing 0 $margin-for-resizing $margin-for-resizing;
 
-        &::before {
-            content: "";
-            background-image: url("../img/iglogo.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: $logo-width;
-            width: $logo-width;
-            display: inline-block;
-            margin-right: $logo-right-margin;
-        }
+		&::before {
+			content: "";
+			background-image: url("../img/iglogo.svg");
+			background-repeat: no-repeat;
+			background-size: contain;
+			height: $logo-width;
+			width: $logo-width;
+			display: inline-block;
+			margin-right: $logo-right-margin;
+		}
 
-        > .title-text {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: calc(100vw - #{$title-left-padding + $logo-width + $logo-right-margin + ($title-control-width * 3)} - 0.5rem);
-            display: inline-block;
+		> .title-text {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: calc(100vw - #{$title-left-padding + $logo-width + $logo-right-margin + ($title-control-width * 3)} - 0.5rem);
+			display: inline-block;
 
-            span {
-                display: inline;
-                padding: 0 1rem;
-                border-right: 1px solid rgba(0,0,0,0.1);
+			span {
+				display: inline;
+				padding: 0 1rem;
+				border-right: 1px solid rgba(0,0,0,0.1);
 
-                &:first-child {
-                    padding-left: 0;
-                }
-                &:last-child {
-                    border-right: 0;
-                }
-            }
-        }
-    }
+				&:first-child {
+					padding-left: 0;
+				}
+				&:last-child {
+					border-right: 0;
+				}
+			}
+		}
+	}
 
 
 
