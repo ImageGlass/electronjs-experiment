@@ -62,7 +62,7 @@ class WindowTitle extends React.Component {
 
 		// Window is maximized state, display Restore button
 		if (this.state.isMaximized) {
-			btn_window_state = <div className="title-control minimize" onClick={this.handleRestoreClick}></div>
+			btn_window_state = <div className="title-control restore" onClick={this.handleRestoreClick}></div>
 		}
 		// Window is in normal state, display Maximize button
 		else {

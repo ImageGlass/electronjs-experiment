@@ -20,12 +20,18 @@ $margin-for-resizing: 2px;
 		width: $title-control-width;
 		transition: all 200ms ease;
 		flex: 0 0 auto;
+		border-radius: 0 0 1px 1px;
 
 		&:hover {
 			background-color: rgba(0,0,0,0.05);
 		}
+		&:active {
+			background-color: rgba(0,0,0,0.05);
+			box-shadow: inset 0 0 20px -5px rgba(0,0,0,0.15);
+		}
 
 		&::before,
+		&.restore::after,
 		&.close::after {
 			content: "";
 			display: block;
@@ -40,10 +46,6 @@ $margin-for-resizing: 2px;
 			margin: auto;
 			transition: all 200ms ease;
 		}
-		&.close:hover::before,
-		&.close:hover::after {
-			background-color: #fff;
-		}
 
 		&.minimize::before {
 			border-top: 0;
@@ -55,10 +57,24 @@ $margin-for-resizing: 2px;
 			border-radius: 1px;
 		}
 
+		&.restore::before {
+			width: 0.7857rem;
+			height: 0.7857rem;
+			bottom: 0.0714rem;
+			left: 0.0714rem;
+			border-radius: 1px;
+		}
+		&.restore::after {
+			background-color: #fff;
+			width: 0.7857rem;
+			height: 0.7857rem;
+			right: 0.2857rem;
+			top: 0.2857rem;
+			border-radius: 1px;
+		}
+
 		&.close {
-			&:hover {
-				background-color: #c75050;
-			}
+			border-radius: 0 0 0 1px;
 
 			&::before {
 				border: 0;
@@ -72,6 +88,18 @@ $margin-for-resizing: 2px;
 				height: 0.1rem;
 				background-color: $color-text;
 				transform: rotate(-45deg);
+			}
+
+			&:hover,
+			&:active {
+				background-color: #E81123;
+				&::before,
+				&::after {
+					background-color: #fff;
+				}
+			}
+			&:active {
+				box-shadow: inset 0 0 20px -5px rgba(0,0,0,0.3);
 			}
 		}
 
