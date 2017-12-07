@@ -11,6 +11,7 @@ import Viewer from "./frmMain/components/viewer.component"
 
 
 class App extends React.Component {
+	
 	render() {
 		return (<div className="app-root">
 			<WindowTitle />
@@ -25,5 +26,13 @@ class App extends React.Component {
 ReactDOM.render(
 	<App />, document.getElementById("app")
 )
+
+
+
+// Browser Window Events
+require("./frmMain/window-events")
+
+
+
 
 export default App

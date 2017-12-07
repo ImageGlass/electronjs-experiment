@@ -23,15 +23,7 @@ ReactDOM.render(<App />, document.getElementById('app'))
 
 
 
-ipcRenderer.on("mainWindow_maximize", function (e, arg) {
-	console.log("mainWindow_maximize")
-})
-ipcRenderer.on("mainWindow_unmaximize", function (e, arg) {
-	console.log("mainWindow_unmaximize")
-})
-ipcRenderer.on("mainWindow_restore", function (e, arg) {
-	console.log("mainWindow_restore")
-})
+
 
 
 

@@ -1,5 +1,6 @@
 import React from "react"
 const { ipcRenderer, remote } = require("electron")
+ 
 
 class WindowTitle extends React.Component {
 	constructor(props) {
@@ -16,6 +17,7 @@ class WindowTitle extends React.Component {
 		this.handleMaximizeClick = this.handleMaximizeClick.bind(this)
 		this.handleRestoreClick = this.handleRestoreClick.bind(this)
 		this.handleCloseClick = this.handleCloseClick.bind(this)
+
 	}
 
 	handleMinimizeClick(e) {
