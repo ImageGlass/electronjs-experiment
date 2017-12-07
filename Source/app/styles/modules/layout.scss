@@ -1,47 +1,47 @@
 @charset "UTF-8";
 
 body {
-    overflow: hidden;
+	overflow: hidden;
 }
 #app {
-    min-height: 100vh;
-    user-select: none;
-    cursor: default;
+	min-height: 100vh;
+	user-select: none;
+	cursor: default;
 }
 .app-root {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: $h-window-title $h-toolbar $h-viewer $h-thumbnail-bar $h-control-bar;
-    grid-template-columns: auto;
-    grid-template-areas: 
-    "window-title window-title"
-    "toolbar toolbar"
-    "viewer viewer"
-    "thumbnail-bar thumbnail-bar"
-    "control-bar control-bar";
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: $h-window-title $h-toolbar $h-viewer $h-thumbnail-bar $h-control-bar;
+	grid-template-columns: auto;
+	grid-template-areas: 
+	"window-title window-title"
+	"toolbar toolbar"
+	"viewer viewer"
+	"thumbnail-bar thumbnail-bar"
+	"control-bar control-bar";
 }
 .window-title {
-    grid-area: window-title;
+	grid-area: window-title;
 }
 .toolbar {
-    grid-area: toolbar;
+	grid-area: toolbar;
 
-    // background-color: #FADBFF;
+	// background-color: rgb(224, 224, 224);
 }
 .viewer {
-    grid-area: viewer;
+	grid-area: viewer;
 
-    // background-color: #FFD5D9
+	// background-color: rgb(255, 255, 255);
 }
 .thumbnail-bar {
-    grid-area: thumbnail-bar;
+	grid-area: thumbnail-bar;
 
-    // background-color: #F5FFE2
+	// background-color: rgb(224, 224, 224);
 }
 .control-bar {
-    grid-area: control-bar;
+	grid-area: control-bar;
 
-    // background-color: #E0FFF8;
+	// background-color: rgb(224, 224, 224);
 }
 
 
