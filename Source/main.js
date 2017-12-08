@@ -18,7 +18,7 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1200,
 		height: 700,
-		//frame: false
+		frame: false
 	})
 
 
@@ -49,10 +49,6 @@ function createWindow() {
 
 	mainWindow.on("unmaximize", function () {
 		mainWindow.webContents.send("mainWindow_unmaximize");
-	})
-
-	mainWindow.on("restore", function () {
-		mainWindow.webContents.send("mainWindow_restore");
 	})
 }
 

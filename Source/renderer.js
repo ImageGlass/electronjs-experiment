@@ -15,5 +15,5 @@ import Style from "./app/scss/app.scss"
 $("html").addClass(process.platform)
 
 
-// Browser Window Events
-require("./app/renderer-process/main-window/window-events")
+// add Main window
+require("./app/renderer-process/main-window/main-window")
