@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+// 1. Fonts
+$font-size: 14px !default;
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-color: #585858 !default;
+$font-link-color: #0066ff !default;
+
+$font-weight-light: 100 !default;
+$font-weight-medium: 400 !default;
+$font-weight-bold: 600 !default;
+
+
+// 2. Colors
+$color-text: #585858 !default;
+$color-1: #f00 !default; // primary color 1
+$color-2: #0f0 !default; // primary color 2
+$color-3: #00f !default; // secondary color
+
+
+
+
+// 3. Widths
+$w-xs: 0.3572rem !default; //5px
+$w-s: 0.7142rem !default; //10px
+$w-m: 1.4285rem !default; //20px
+$w-l: 2.1429rem !default; //30px
+$w-xl: 2.8572rem !default; //40px
+
+
+// 4. Layout variables
+$h-window-title: 2.5rem !default;
+$h-toolbar: 3rem !default;
+$h-viewer: auto !default;
+$h-thumbnail-bar: 6rem !default;
+$h-control-bar: 4rem !default;
+
+
+
+
+
+
