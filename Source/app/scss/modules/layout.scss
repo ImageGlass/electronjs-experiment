@@ -7,9 +7,7 @@ body {
 	min-height: 100vh;
 	user-select: none;
 	cursor: default;
-}
-.app-root {
-	min-height: 100vh;
+
 	display: grid;
 	grid-template-rows: $h-window-title $h-toolbar $h-viewer $h-thumbnail-bar $h-control-bar;
 	grid-template-columns: auto;

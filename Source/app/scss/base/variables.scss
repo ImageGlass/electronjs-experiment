@@ -2,7 +2,9 @@
 
 // 1. Fonts
 $font-size: 14px !default;
-$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !default;
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-color: #585858 !default;
+$font-link-color: #0066ff !default;
 
 $font-weight-light: 100 !default;
 $font-weight-medium: 400 !default;
@@ -10,11 +12,12 @@ $font-weight-bold: 600 !default;
 
 
 // 2. Colors
+$color-text: #585858 !default;
 $color-1: #f00 !default; // primary color 1
 $color-2: #0f0 !default; // primary color 2
 $color-3: #00f !default; // secondary color
 
-$color-text: #585858 !default;
+
 
 
 // 3. Widths
