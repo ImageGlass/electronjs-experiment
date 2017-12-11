@@ -36,10 +36,10 @@ const handleCloseClick = (e) => {
 const initComponent = () => {
 
 	if (remote.BrowserWindow.getFocusedWindow().isMaximized()) {
-		$(".title-control.window-state").addClass("restore")
+		$(".window-title").addClass("window-restore")
 	}
 	else {
-		$(".title-control.window-state").addClass("maximize")
+		$(".window-title").addClass("window-maximize")
 	}
 	
 	$(".title-control.minimize").click(handleMinimizeClick)

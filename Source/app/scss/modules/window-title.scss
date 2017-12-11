@@ -5,7 +5,7 @@ $title-left-padding: 1rem;
 $logo-width: 1.2rem;
 $logo-right-margin: 0.5rem;
 $title-control-width: 3.5rem;
-$margin-for-resizing: 2px;
+$margin-for-resizing: 0.1429rem;
 
 .window-title {
 	margin: 0;
@@ -31,7 +31,6 @@ $margin-for-resizing: 2px;
 		}
 
 		&::before,
-		&.restore::after,
 		&.close::after {
 			content: "";
 			display: block;
@@ -51,26 +50,6 @@ $margin-for-resizing: 2px;
 			border-top: 0;
 			border-left: 0;
 			border-right: 0;
-		}
-
-		&.maximize::before {
-			border-radius: 1px;
-		}
-
-		&.restore::before {
-			width: 0.7857rem;
-			height: 0.7857rem;
-			bottom: 0.0714rem;
-			left: 0.0714rem;
-			border-radius: 1px;
-		}
-		&.restore::after {
-			background-color: #fff;
-			width: 0.7857rem;
-			height: 0.7857rem;
-			right: 0.2857rem;
-			top: 0.2857rem;
-			border-radius: 1px;
 		}
 
 		&.close {
@@ -152,8 +131,53 @@ $margin-for-resizing: 2px;
 	}
 
 
+	&.window-maximize {
+
+		.window-state::before {
+			border-radius: 1px;
+		}
+	}
+
+	&.window-restore {
+		.title {
+			margin: 0;
+			padding: $margin-for-resizing 0 $margin-for-resizing $title-left-padding;
+		}
+
+		.window-state {
+			&::before {
+				width: 0.7857rem;
+				height: 0.7857rem;
+				bottom: 0.0714rem;
+				left: 0.0714rem;
+				border-radius: 1px;
+			}
+		
+			&::after {
+				content: "";
+				display: block;
+				position: absolute;
+				background-color: #fff;
+				width: 0.7857rem;
+				height: 0.7857rem;
+		
+				border: 0.1rem solid $color-text;
+				border-radius: 1px;
+				top: 0.2857rem;
+				bottom: 0;
+				left: 0;
+				right: 0.2857rem;
+				margin: auto;
+		
+				transition: all 200ms ease;
+			}
+		}
+	}
+
 
 }
+
+
 
 
 

@@ -6,13 +6,13 @@ const { ipcRenderer } = require("electron")
 
 
 ipcRenderer.on("mainWindow_maximize", function (e, arg) {
-	$(".title-control.window-state").removeClass("maximize")
-	$(".title-control.window-state").addClass("restore")
+	$(".window-title").removeClass("window-maximize")
+	$(".window-title").addClass("window-restore")
 })
 
 ipcRenderer.on("mainWindow_unmaximize", function (e, arg) {
-	$(".title-control.window-state").removeClass("restore")
-	$(".title-control.window-state").addClass("maximize")
+	$(".window-title").removeClass("window-restore")
+	$(".window-title").addClass("window-maximize")
 })
 
 
