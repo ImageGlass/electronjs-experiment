@@ -1,12 +1,18 @@
+/* ----------------------------------------------------------
+* Window Title Component
+* ----------------------------------------------------------*/
+
 const { ipcRenderer, remote } = require("electron")
 const path = "./app/renderer-process/main-window/"
 
 
+// Minimize button click event
 const handleMinimizeClick = (e) => {
 	e.preventDefault()
 	remote.BrowserWindow.getFocusedWindow().minimize()
 }
 
+// Maximize/Restore button click event
 const handleWindowStateClick = (e) => {
 	e.preventDefault()
 
@@ -18,7 +24,7 @@ const handleWindowStateClick = (e) => {
 	}
 }
 
-
+// Close button click event
 const handleCloseClick = (e) => {
 	e.preventDefault()
 	remote.BrowserWindow.getFocusedWindow().close()
@@ -33,7 +39,10 @@ const handleCloseClick = (e) => {
 
 
 // Initiate functions
-const initComponent = () => {
+const initComponent = (html) => {
+	// Append html source code
+	$("#app").append(html)
+
 
 	if (remote.BrowserWindow.getFocusedWindow().isMaximized()) {
 		$(".window-title").addClass("window-restore")
@@ -49,6 +58,6 @@ const initComponent = () => {
 
 
 // Load HTML data
-$("#app").load(`${path}views/window-title.html`, initComponent)
+$("<div></div>").load(`${path}views/window-title.html`, initComponent)
 
 
