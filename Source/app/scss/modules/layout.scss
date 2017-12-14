@@ -9,14 +9,13 @@ body {
 	cursor: default;
 
 	display: grid;
-	grid-template-rows: $h-window-title $h-toolbar $h-viewer $h-thumbnail-bar $h-control-bar;
+	grid-template-rows: $h-window-title $h-toolbar $h-viewer $h-thumbnail-bar;
 	grid-template-columns: auto;
 	grid-template-areas: 
 	"window-title window-title"
 	"toolbar toolbar"
 	"viewer viewer"
-	"thumbnail-bar thumbnail-bar"
-	"control-bar control-bar";
+	"thumbnail-bar thumbnail-bar";
 }
 .window-title {
 	grid-area: window-title;
@@ -24,22 +23,17 @@ body {
 .toolbar {
 	grid-area: toolbar;
 
-	// background-color: rgb(224, 224, 224);
+	background-color: rgb(224, 224, 224);
 }
 .viewer {
 	grid-area: viewer;
 
-	// background-color: rgb(255, 255, 255);
+	background-color: rgb(255, 255, 255);
 }
 .thumbnail-bar {
 	grid-area: thumbnail-bar;
 
-	// background-color: rgb(224, 224, 224);
-}
-.control-bar {
-	grid-area: control-bar;
-
-	// background-color: rgb(224, 224, 224);
+	background-color: rgb(224, 224, 224);
 }
 
 
