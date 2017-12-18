@@ -16,6 +16,7 @@ let mainWindow
 function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
+		icon: path.join(__dirname, "build/png/64x64.png"),
 		width: 1200,
 		height: 700,
 		frame: false
@@ -50,6 +51,9 @@ function createWindow() {
 	mainWindow.on("unmaximize", function () {
 		mainWindow.webContents.send("mainWindow_unmaximize");
 	})
+
+	// Install Devtron for debugging
+	// require("devtron").install()
 }
 
 
