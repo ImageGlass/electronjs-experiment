@@ -13,6 +13,7 @@ $margin-for-resizing: 0.1429rem;
 	list-style: none;
 	display: flex;
 	justify-content: flex-end;
+	background-color: $color-toolbar;
 
 	> .title-control {
 		padding: 1rem;
@@ -23,11 +24,10 @@ $margin-for-resizing: 0.1429rem;
 		border-radius: 0 0 1px 1px;
 
 		&:hover {
-			background-color: rgba(0,0,0,0.05);
+			background-color: lighten($color-toolbar, 5);
 		}
 		&:active {
-			background-color: rgba(0,0,0,0.05);
-			box-shadow: inset 0 0 20px -5px rgba(0,0,0,0.15);
+			background-color: darken($color-toolbar, 5);
 		}
 
 		&::before,
@@ -78,7 +78,7 @@ $margin-for-resizing: 0.1429rem;
 				}
 			}
 			&:active {
-				box-shadow: inset 0 0 20px -5px rgba(0,0,0,0.3);
+				background-color: darken(#E81123, 10);
 			}
 		}
 
@@ -118,7 +118,7 @@ $margin-for-resizing: 0.1429rem;
 			span {
 				display: inline;
 				padding: 0 1rem;
-				border-right: 1px solid rgba(0,0,0,0.1);
+				border-right: 1px solid darken($color-text, 60);
 
 				&:first-child {
 					padding-left: 0;
@@ -157,7 +157,7 @@ $margin-for-resizing: 0.1429rem;
 				content: "";
 				display: block;
 				position: absolute;
-				background-color: #fff;
+				background-color: $color-toolbar;
 				width: 0.7857rem;
 				height: 0.7857rem;
 		
@@ -170,6 +170,13 @@ $margin-for-resizing: 0.1429rem;
 				margin: auto;
 		
 				transition: all 200ms ease;
+			}
+
+			&:hover::after {
+				background-color: lighten($color-toolbar, 5);
+			}
+			&:active::after {
+				background-color: darken($color-toolbar, 5);
 			}
 		}
 	}
