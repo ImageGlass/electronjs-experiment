@@ -11,7 +11,7 @@
 
 		canvas {
 			display: block;
-			background-color: #fff;// $color-viewer;
+			background-color: $color-viewer;
 			image-rendering: pixelated;
 			position: absolute;
 			width: 100%;

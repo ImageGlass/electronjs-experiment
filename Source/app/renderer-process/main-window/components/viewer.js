@@ -31,7 +31,7 @@ const SCALE_FACTOR = 1.1;
 
 
 function init() {
-	stage = new createjs.Stage("picMain");
+	stage = new createjs.StageGL("picMain", { antialias: true, transparent: true });
 	canvas = document.getElementById("picMain");
 
 	Resize();
@@ -116,12 +116,16 @@ ipcRenderer.on("mainWindow_resize", function (e, arg) {
 
 function Resize(forceUpdateStage = true) {
 	let $viewer = $("#viewer")
+	let w = $viewer.outerWidth()
+	let h = $viewer.outerHeight()
 
 	//console.log($viewer.outerWidth() + "__" + $viewer.outerHeight())
 
 	// update canvas size
-	canvas.width = $viewer.outerWidth();
-	canvas.height = $viewer.outerHeight();
+	canvas.width = w
+	canvas.height = h
+
+	stage.updateViewport(w, h)
 
 	if (forceUpdateStage) {
 		// tell timer to redraw the stage
