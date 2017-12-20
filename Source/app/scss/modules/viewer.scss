@@ -2,6 +2,22 @@
 
 .viewer {
 	background-color: $color-viewer;
+	display: flex;
+
+	.canvas-wrapper {
+		width: 100%;
+		background-color: #f0f;
+		position: relative;
+
+		canvas {
+			display: block;
+			background-color: #fff;// $color-viewer;
+			image-rendering: pixelated;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}
 }
 
 

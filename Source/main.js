@@ -52,6 +52,12 @@ function createWindow() {
 		mainWindow.webContents.send("mainWindow_unmaximize");
 	})
 
+	mainWindow.on("resize", function() {
+		mainWindow.webContents.send("mainWindow_resize");
+	})
+
+	
+
 	// Install Devtron for debugging
 	// require("devtron").install()
 }
