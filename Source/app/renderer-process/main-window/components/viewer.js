@@ -71,15 +71,6 @@ function init() {
 	createjs.Ticker.timingMode = createjs.Ticker.RAF;
 	createjs.Ticker.addEventListener("tick", tick);
 
-	// btnNext = document.getElementById("btnNext");
-	// btnNext.addEventListener("click", function(e) {
-	// 	LoadImage(1);
-	// }, false);
-
-	// btnBack = document.getElementById("btnBack");
-	// btnBack.addEventListener("click", function(e) {
-	// 	LoadImage(-1);
-	// }, false);
 }
 
 
@@ -88,7 +79,7 @@ function LoadImage(step) {
 	index += step;
 	if (index >= img_list.length) index = 0;
 	if (index < 0) index = img_list.length - 1;
-	console.log(index)
+	// console.log(index)
 
 	let pic = new createjs.Bitmap(img_list[index]);
 
@@ -119,7 +110,7 @@ function Resize(forceUpdateStage = true) {
 	let w = $viewer.outerWidth()
 	let h = $viewer.outerHeight()
 
-	//console.log($viewer.outerWidth() + "__" + $viewer.outerHeight())
+	// console.log(w + "__" + h)
 
 	// update canvas size
 	canvas.width = w

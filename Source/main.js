@@ -29,7 +29,7 @@ function createWindow() {
 	// and load the index.html of the app.
 	mainWindow.loadURL(url.format({
 		pathname: path.join(__dirname, "index.html"),
-		protocol: 'file:',
+		protocol: "file:",
 		slashes: true
 	}))
 
@@ -56,12 +56,14 @@ function createWindow() {
 		mainWindow.webContents.send("mainWindow_resize");
 	})
 
-	
 
 	// Install Devtron for debugging
 	// require("devtron").install()
 }
 
+//Disable DPI scaling
+app.commandLine.appendSwitch("high-dpi-support", 1)
+app.commandLine.appendSwitch("force-device-scale-factor", 1)
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
