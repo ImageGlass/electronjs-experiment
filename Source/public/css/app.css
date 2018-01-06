@@ -643,7 +643,7 @@ body {
   user-select: none;
   cursor: default;
   display: grid;
-  grid-template-rows: 2.5rem 3rem auto 6rem;
+  grid-template-rows: 0 0 auto 0;
   grid-template-columns: auto;
   grid-template-areas: "window-title window-title" "toolbar toolbar" "viewer viewer" "thumbnail-bar thumbnail-bar"; }
 
@@ -665,7 +665,13 @@ body {
   list-style: none;
   display: flex;
   justify-content: flex-end;
-  background-color: #363636; }
+  background-color: rgba(54, 54, 54, 0.7);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 2.5rem;
+  backdrop-filter: blur(30px); }
   .window-title > .title-control {
     padding: 1rem;
     position: relative;
@@ -777,12 +783,19 @@ body {
     background-color: #292929; }
 
 .toolbar {
-  background-color: #363636;
-  padding: 0 1rem; }
+  background-color: rgba(54, 54, 54, 0.7);
+  padding: 0 1rem;
+  position: sticky;
+  top: 2.5rem;
+  z-index: 99;
+  width: 100vw;
+  height: 3rem;
+  backdrop-filter: blur(30px); }
 
 .viewer {
-  background-color: #282828;
-  display: flex; }
+  background-color: rgba(40, 40, 40, 0.7);
+  display: flex;
+  height: 100vh; }
   .viewer .canvas-wrapper {
     width: 100%;
     background-color: #f0f;
@@ -795,5 +808,11 @@ body {
       height: 100%; }
 
 .thumbnail-bar {
-  background-color: #363636;
-  padding: 0 1rem; }
+  background-color: rgba(54, 54, 54, 0.7);
+  padding: 0 1rem;
+  position: fixed;
+  bottom: 0;
+  z-index: 98;
+  width: 100vw;
+  height: 6rem;
+  backdrop-filter: blur(30px); }

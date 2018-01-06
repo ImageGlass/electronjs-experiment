@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
 .viewer {
-	background-color: $color-viewer;
+	background-color: rgba($color-viewer, 0.7);
 	display: flex;
+	height: 100vh;
 
 	.canvas-wrapper {
 		width: 100%;

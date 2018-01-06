@@ -1,8 +1,15 @@
 @charset "UTF-8";
 
 .toolbar {
-	background-color: $color-toolbar;
+	background-color: rgba($color-toolbar, 0.7);
 	padding: 0 1rem;
+
+	position: sticky;
+	top: $h-window-title;
+	z-index: 99;
+	width: 100vw;
+	height: $h-toolbar;
+	backdrop-filter: blur(30px);
 }
 
 

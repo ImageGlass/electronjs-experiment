@@ -13,7 +13,14 @@ $margin-for-resizing: 0.1429rem;
 	list-style: none;
 	display: flex;
 	justify-content: flex-end;
-	background-color: $color-toolbar;
+	background-color: rgba($color-toolbar, 0.7);
+
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	width: 100vw;
+	height: $h-window-title;
+	backdrop-filter: blur(30px);
 
 	> .title-control {
 		padding: 1rem;

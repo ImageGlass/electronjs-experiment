@@ -1,8 +1,15 @@
 @charset "UTF-8";
 
 .thumbnail-bar {
-	background-color: $color-thumbnail-bar;
+	background-color: rgba($color-thumbnail-bar, 0.7);
 	padding: 0 1rem;
+
+	position: fixed;
+	bottom: 0;
+	z-index: 98;
+	width: 100vw;
+	height: $h-thumbnail-bar;
+	backdrop-filter: blur(30px);
 }
 
 

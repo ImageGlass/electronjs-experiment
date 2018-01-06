@@ -9,7 +9,7 @@ body {
 	cursor: default;
 
 	display: grid;
-	grid-template-rows: $h-window-title $h-toolbar $h-viewer $h-thumbnail-bar;
+	grid-template-rows: 0 0 $h-viewer 0;
 	grid-template-columns: auto;
 	grid-template-areas: 
 	"window-title window-title"
