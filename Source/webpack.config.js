@@ -1,6 +1,8 @@
 var webpack = require("webpack")
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
+var PROD = (process.env.NODE_ENV === "production")
+
 module.exports = {
 	entry: "./renderer.js",
 	output: {
@@ -19,15 +21,20 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
+	plugins: PROD ? [ //production mode
 		new ExtractTextPlugin("./public/css/app.css", {
 			allChunks: true
 		}),
-		new webpack.DefinePlugin({
-			"process.env": {
-				NODE_ENV: JSON.stringify("production")
-			}
+		new webpack.optimize.UglifyJsPlugin(),
+		// new webpack.DefinePlugin({
+		// 	"process.env": {
+		// 		NODE_ENV: JSON.stringify("production")
+		// 	}
+		// }),
+		
+	] : [ //dev mode
+		new ExtractTextPlugin("./public/css/app.css", {
+			allChunks: true
 		}),
-		new webpack.optimize.UglifyJsPlugin()
 	]
 }

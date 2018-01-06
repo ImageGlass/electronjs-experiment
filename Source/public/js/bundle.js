@@ -1,1 +1,533 @@
-!function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,t),i.l=!0,i.exports}var n={};t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=1)}([function(e,t){e.exports=require("electron")},function(e,t,n){"use strict";var o=n(2),i=(function(e){e&&e.__esModule}(o),n(0)),r=(i.webFrame,i.remote);console.log(r.getGlobal("author")),$("html").addClass(process.platform),n(3)},function(e,t){},function(e,t,n){"use strict";n(4),n(5),n(6),n(7),n(8)},function(e,t,n){"use strict";var o=n(0),i=o.ipcRenderer;i.on("mainWindow_maximize",function(e,t){$(".window-title").removeClass("window-maximize"),$(".window-title").addClass("window-restore")}),i.on("mainWindow_unmaximize",function(e,t){$(".window-title").removeClass("window-restore"),$(".window-title").addClass("window-maximize")})},function(e,t,n){"use strict";var o=n(0),i=(o.ipcRenderer,o.remote),r=function(e){e.preventDefault(),i.BrowserWindow.getFocusedWindow().minimize()},a=function(e){e.preventDefault(),i.BrowserWindow.getFocusedWindow().isMaximized()?i.BrowserWindow.getFocusedWindow().restore():i.BrowserWindow.getFocusedWindow().maximize()},s=function(e){e.preventDefault(),i.BrowserWindow.getFocusedWindow().close()},d=function(e){$("#app").append(e),i.BrowserWindow.getFocusedWindow().isMaximized()?$(".window-title").addClass("window-restore"):$(".window-title").addClass("window-maximize"),$(".title-control.minimize").click(r),$(".title-control.window-state").click(a),$(".title-control.close").click(s)};$("<div></div>").load("./app/renderer-process/main-window/views/window-title.html",d)},function(e,t,n){"use strict";var o=n(0),i=(o.ipcRenderer,o.remote,function(e){$("#app").append(e)});$("<div></div>").load("./app/renderer-process/main-window/views/toolbar.html",i)},function(e,t,n){"use strict";function o(){g=new createjs.StageGL("picMain",{antialias:!0,transparent:!0}),f=document.getElementById("picMain"),r(),M=createjs.Touch.isSupported(),M&&createjs.Touch.enable(g),m("Is touch supported: "+M),g.enableDOMEvents=!0,g.enableMouseOver(10),g.mouseMoveOutside=!0,g.addEventListener("stagemousedown",c),g.addEventListener("stagemousemove",d),g.addEventListener("stagemouseup",l),M&&(g.addEventListener("pressup",u),g.addEventListener("pressmove",w)),i(W),f.addEventListener("mousewheel",s,!1),f.addEventListener("DOMMouseScroll",s,!1),createjs.Ticker.timingMode=createjs.Ticker.RAF,createjs.Ticker.addEventListener("tick",p)}function i(e){W+=e,W>=j.length&&(W=0),W<0&&(W=j.length-1);var t=new createjs.Bitmap(j[W]);t.image.onload=function(){var e=(new createjs.Graphics).beginFill("red").drawRect(0,0,t.image.width,t.image.height);t.hitArea=new createjs.Shape(e),t.x=f.width/2-t.image.width/2,t.y=f.height/2-t.image.height/2,y=!0},g.removeAllChildren(),g.addChild(t)}function r(){var e=!(arguments.length>0&&void 0!==arguments[0])||arguments[0],t=$("#viewer"),n=t.outerWidth(),o=t.outerHeight();console.log(n+"__"+o),f.width=n,f.height=o,g.updateViewport(n,o),e&&(y=!0)}function a(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null,n=Math.pow(z,e);null===t&&(t=g.globalToLocal(g.mouseX,g.mouseY)),g.regX=t.x,g.regY=t.y,g.x=g.mouseX,g.y=g.mouseY,g.scaleX=g.scaleY*=n,m("Zoom: "+g.getTransformedBounds().width/g.getBounds().width),y=!0}function s(e){a(e.wheelDelta?e.wheelDelta/40:e.detail?-e.detail:0)}function d(e){if(D){var t=e.stageX+g.offset.x,n=e.stageY+g.offset.y;g.x=t,g.y=n,y=!0}}function c(e){g.offset={x:g.x-e.stageX,y:g.y-e.stageY},D=!0,M&&(0==e.pointerID||1==e.pointerID?v=g.globalToLocal(e.stageX,e.stageY):2==e.pointerID&&(h=g.globalToLocal(e.stageX,e.stageY)))}function l(e){D=!1}function u(e){M&&(0==e.pointerID||1==e.pointerID?v=null:2==e.pointerID&&(h=null))}function w(e){if(M&&v&&h){var t=E(h,v),n=E(h,v),o=n/t,i={x:(v.x+h.x)/2,y:(v.y+h.y)/2};m("newZoom: "+o),m("position: "+i.x+", "+i.y),a(o,i)}}function p(e){y&&(y=!1,g.update(e))}function m(e){arguments.length>1&&void 0!==arguments[1]&&arguments[1],console.log(e)}var f,g,v,h,x=n(0),b=x.ipcRenderer,y=(x.remote,!1),W=0,j=["https://lh3.googleusercontent.com/gN6iBKP1b2GTXZZoCxhyXiYIAh8QJ_8xzlhEK6csyDadA4GdkEdIEy9Bc8s5jozt1g=w300","https://cdn.glitch.com/ace687ad-01fb-468f-ba6b-a67283811a0c%2Fcar.svg?1504800679560","http://www.gravatar.com/avatar/4ff020826d61a6cfd875cb5cc29e5ce6/?default=&s=80","https://www.w3schools.com/css/img_fjords.jpg"],D=!1,M=!1,z=1.1;b.on("mainWindow_resize",function(e,t){r()});var E=function(e,t){var n=t.x-e.x,o=t.y-e.y;return Math.sqrt(n*n+o*o)},B=function(e){$("#app").append(e),o()};$("<div></div>").load("./app/renderer-process/main-window/views/viewer.html",B)},function(e,t,n){"use strict";var o=n(0),i=(o.ipcRenderer,o.remote,function(e){$("#app").append(e)});$("<div></div>").load("./app/renderer-process/main-window/views/thumbnail-bar.html",i)}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _app = __webpack_require__(2);
+
+var _app2 = _interopRequireDefault(_app);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// This file is required by the index.html file and will
+// be executed in the renderer process for that window.
+// All of the Node.js APIs are available in this process.
+var _require = __webpack_require__(0),
+    webFrame = _require.webFrame,
+    remote = _require.remote;
+
+// disable zoom in/out functionality in app
+// webFrame.setVisualZoomLevelLimits(1, 1)
+// webFrame.setLayoutZoomLevelLimits(0, 0)
+
+console.log(remote.getGlobal("author"));
+
+// detect OS type
+$("html").addClass(process.platform);
+
+// add Main window
+__webpack_require__(3);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* ----------------------------------------------------------
+* Main Window Form
+* ----------------------------------------------------------*/
+
+// Browser Window Events
+__webpack_require__(4);
+
+// Add Window Title component
+__webpack_require__(5);
+
+// Add Toolbar component
+__webpack_require__(6);
+
+// Add Viewer bar component
+__webpack_require__(7);
+
+// Add Thumbnail bar component
+__webpack_require__(8);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**********************************************************
+* frmMain window events
+***********************************************************/
+
+var _require = __webpack_require__(0),
+    ipcRenderer = _require.ipcRenderer;
+
+ipcRenderer.on("mainWindow_maximize", function (e, arg) {
+	$(".window-title").removeClass("window-maximize");
+	$(".window-title").addClass("window-restore");
+});
+
+ipcRenderer.on("mainWindow_unmaximize", function (e, arg) {
+	$(".window-title").removeClass("window-restore");
+	$(".window-title").addClass("window-maximize");
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* ----------------------------------------------------------
+* Window Title Component
+* ----------------------------------------------------------*/
+
+var _require = __webpack_require__(0),
+    ipcRenderer = _require.ipcRenderer,
+    remote = _require.remote;
+
+var path = "./app/renderer-process/main-window/";
+
+// Minimize button click event
+var handleMinimizeClick = function handleMinimizeClick(e) {
+	e.preventDefault();
+	remote.BrowserWindow.getFocusedWindow().minimize();
+};
+
+// Maximize/Restore button click event
+var handleWindowStateClick = function handleWindowStateClick(e) {
+	e.preventDefault();
+
+	if (remote.BrowserWindow.getFocusedWindow().isMaximized()) {
+		remote.BrowserWindow.getFocusedWindow().restore();
+	} else {
+		remote.BrowserWindow.getFocusedWindow().maximize();
+	}
+};
+
+// Close button click event
+var handleCloseClick = function handleCloseClick(e) {
+	e.preventDefault();
+	remote.BrowserWindow.getFocusedWindow().close();
+};
+
+// Initiate functions
+var initComponent = function initComponent(html) {
+	// Append html source code
+	$("#app").append(html);
+
+	if (remote.BrowserWindow.getFocusedWindow().isMaximized()) {
+		$(".window-title").addClass("window-restore");
+	} else {
+		$(".window-title").addClass("window-maximize");
+	}
+
+	$(".title-control.minimize").click(handleMinimizeClick);
+	$(".title-control.window-state").click(handleWindowStateClick);
+	$(".title-control.close").click(handleCloseClick);
+};
+
+// Load HTML data
+$("<div></div>").load(path + "views/window-title.html", initComponent);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* ----------------------------------------------------------
+* Toolbar Component
+* ----------------------------------------------------------*/
+
+var _require = __webpack_require__(0),
+    ipcRenderer = _require.ipcRenderer,
+    remote = _require.remote;
+
+var path = "./app/renderer-process/main-window/";
+
+// Initiate functions
+var initComponent = function initComponent(html) {
+	// Append html source code
+	$("#app").append(html);
+};
+
+// Load HTML data
+$("<div></div>").load(path + "views/toolbar.html", initComponent);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* ----------------------------------------------------------
+* Viewer Component
+* ----------------------------------------------------------*/
+
+var _require = __webpack_require__(0),
+    ipcRenderer = _require.ipcRenderer,
+    remote = _require.remote;
+
+var path = "./app/renderer-process/main-window/";
+
+var canvas; //Will be linked to the canvas in our index.html page
+var stage; //
+var touch1, touch2;
+var is_update_stage = false;
+
+var img = "https://www.w3schools.com/css/img_fjords.jpg";
+var index = 0;
+var img_list = ["https://lh3.googleusercontent.com/gN6iBKP1b2GTXZZoCxhyXiYIAh8QJ_8xzlhEK6csyDadA4GdkEdIEy9Bc8s5jozt1g=w300", "https://cdn.glitch.com/ace687ad-01fb-468f-ba6b-a67283811a0c%2Fcar.svg?1504800679560", "http://www.gravatar.com/avatar/4ff020826d61a6cfd875cb5cc29e5ce6/?default=&s=80", "https://www.w3schools.com/css/img_fjords.jpg"];
+// var btnNext, btnBack;
+
+
+var is_panning = false;
+var is_touch_support = false;
+var SCALE_FACTOR = 1.1;
+
+function init() {
+	stage = new createjs.StageGL("picMain", { antialias: true, transparent: true });
+	canvas = document.getElementById("picMain");
+
+	Resize();
+
+	// enable touch interactions if supported on the current device:
+	is_touch_support = createjs.Touch.isSupported();
+	if (is_touch_support) {
+		createjs.Touch.enable(stage);
+	}
+	debug("Is touch supported: " + is_touch_support);
+
+	stage.enableDOMEvents = true;
+	// enabled mouse over / out events
+	stage.enableMouseOver(10);
+	stage.mouseMoveOutside = true; // keep tracking the mouse even when it leaves the canvas
+
+
+	stage.addEventListener("stagemousedown", stage_MouseDown);
+	stage.addEventListener("stagemousemove", stage_MouseMove);
+	stage.addEventListener("stagemouseup", stage_MouseUp);
+
+	if (is_touch_support) {
+		stage.addEventListener("pressup", stage_PressUp);
+		stage.addEventListener("pressmove", stage_PressMove);
+	}
+
+	// pic = new createjs.Bitmap(img);
+
+
+	LoadImage(index);
+
+	canvas.addEventListener("mousewheel", stage_MouseWheel, false);
+	canvas.addEventListener("DOMMouseScroll", stage_MouseWheel, false);
+
+	createjs.Ticker.timingMode = createjs.Ticker.RAF;
+	createjs.Ticker.addEventListener("tick", tick);
+}
+
+function LoadImage(step) {
+
+	index += step;
+	if (index >= img_list.length) index = 0;
+	if (index < 0) index = img_list.length - 1;
+	// console.log(index)
+
+	var pic = new createjs.Bitmap(img_list[index]);
+
+	pic.image.onload = function () {
+
+		var graphics = new createjs.Graphics().beginFill("red").drawRect(0, 0, pic.image.width, pic.image.height);
+		pic.hitArea = new createjs.Shape(graphics);
+
+		pic.x = canvas.width / 2 - pic.image.width / 2;
+		pic.y = canvas.height / 2 - pic.image.height / 2;
+
+		// tell timer to redraw the stage
+		is_update_stage = true;
+	};
+
+	stage.removeAllChildren();
+	stage.addChild(pic);
+}
+
+ipcRenderer.on("mainWindow_resize", function (e, arg) {
+	//console.log("================")	
+	Resize();
+});
+
+function Resize() {
+	var forceUpdateStage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+	var $viewer = $("#viewer");
+	var w = $viewer.outerWidth();
+	var h = $viewer.outerHeight();
+
+	// console.log(w + "__" + h)
+
+	// update canvas size
+	canvas.width = w;
+	canvas.height = h;
+
+	stage.updateViewport(w, h);
+
+	if (forceUpdateStage) {
+		// tell timer to redraw the stage
+		is_update_stage = true;
+	}
+}
+
+function Zoom(delta) {
+	var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+
+	var factor = Math.pow(SCALE_FACTOR, delta);
+	// console.log(delta);
+
+	if (position === null) {
+		position = stage.globalToLocal(stage.mouseX, stage.mouseY);
+	}
+
+	stage.regX = position.x;
+	stage.regY = position.y;
+	stage.x = stage.mouseX;
+	stage.y = stage.mouseY;
+	stage.scaleX = stage.scaleY *= factor;
+
+	debug("Zoom: " + stage.getTransformedBounds().width / stage.getBounds().width);
+
+	// tell timer to redraw the stage
+	is_update_stage = true;
+}
+
+function stage_MouseWheel(e) {
+	var delta = e.wheelDelta ? e.wheelDelta / 40 : e.detail ? -e.detail : 0;
+	Zoom(delta);
+}
+
+function stage_MouseMove(e) {
+	if (is_panning) {
+		var newX = e.stageX + stage.offset.x;
+		var newY = e.stageY + stage.offset.y;
+
+		stage.x = newX;
+		stage.y = newY;
+
+		// tell timer to redraw the stage
+		is_update_stage = true;
+	}
+}
+
+function stage_MouseDown(e) {
+	// save current cursor position on stage
+	stage.offset = { x: stage.x - e.stageX, y: stage.y - e.stageY };
+	is_panning = true;
+
+	// Save touch points for zooming
+	if (is_touch_support) {
+
+		// if (e.pointerID == 0 || e.pointerID == -1) { //touch 1 or mouse
+		if (e.pointerID == 0 || e.pointerID == 1) {
+			//touch 1 or mouse
+			touch1 = stage.globalToLocal(e.stageX, e.stageY);
+
+			// } else if (e.pointerID == 1) { //touch 2
+		} else if (e.pointerID == 2) {
+			//touch 2	
+			touch2 = stage.globalToLocal(e.stageX, e.stageY);
+		}
+	}
+}
+
+function stage_MouseUp(e) {
+	// disable panning
+	is_panning = false;
+}
+
+function stage_PressUp(e) {
+
+	if (is_touch_support) {
+		// Clear touch points when zooming is done
+		// if (e.pointerID == 0 || e.pointerID == -1) { //touch 1 or mouse
+		if (e.pointerID == 0 || e.pointerID == 1) {
+			//touch 1 or mouse
+			touch1 = null;
+
+			// } else if (e.pointerID == 1) { //touch 2
+		} else if (e.pointerID == 2) {
+			//touch 2
+			touch2 = null;
+		}
+	}
+}
+
+function stage_PressMove(e) {
+	if (is_touch_support) {
+
+		if (touch1 && touch2) {
+			var oldDistance = GetDistance(touch2, touch1);
+			var newDistance = GetDistance(touch2, touch1);
+
+			var newZoom = newDistance / oldDistance;
+			var position = {
+				x: (touch1.x + touch2.x) / 2,
+				y: (touch1.y + touch2.y) / 2
+
+				// stage.globalToLocal(stage.mouseX, stage.mouseY);
+
+			};debug("newZoom: " + newZoom);
+			debug("position: " + position.x + ", " + position.y);
+
+			Zoom(newZoom, position);
+		}
+	}
+}
+
+function tick(e) {
+	if (is_update_stage) {
+		// this set makes it so the stage only re-renders when an event handler indicates a change has happened.
+		is_update_stage = false; // only update once
+		stage.update(e);
+	}
+}
+
+var GetDistance = function GetDistance(p1, p2) {
+	var x = p2.x - p1.x;
+	var y = p2.y - p1.y;
+
+	return Math.sqrt(x * x + y * y);
+};
+
+function debug(text) {
+	var is_clear_screen = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+	console.log(text);
+}
+
+// Initiate functions
+var initComponent = function initComponent(html) {
+	// Append html source code
+	$("#app").append(html);
+
+	init();
+};
+
+// Load HTML data
+$("<div></div>").load(path + "views/viewer.html", initComponent);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/* ----------------------------------------------------------
+* Thumbnail bar Component
+* ----------------------------------------------------------*/
+
+var _require = __webpack_require__(0),
+    ipcRenderer = _require.ipcRenderer,
+    remote = _require.remote;
+
+var path = "./app/renderer-process/main-window/";
+
+// Initiate functions
+var initComponent = function initComponent(html) {
+	// Append html source code
+	$("#app").append(html);
+};
+
+// Load HTML data
+$("<div></div>").load(path + "views/thumbnail-bar.html", initComponent);
+
+/***/ })
+/******/ ]);

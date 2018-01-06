@@ -19,7 +19,10 @@ function createWindow() {
 		icon: path.join(__dirname, "build/png/64x64.png"),
 		width: 1200,
 		height: 700,
-		frame: false
+		frame: false,
+		webPreferences: {
+			experimentalFeatures: true
+		}
 	})
 
 

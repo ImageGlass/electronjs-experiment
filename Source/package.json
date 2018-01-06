@@ -5,8 +5,8 @@
 	"main": "main.js",
 	"scripts": {
 		"start": "electron .",
-		"build": "set NODE_ENV=production & webpack --optimize-minimize --progress",
-		"dev": "set NODE_ENV=production & webpack --watch --optimize-minimize --progress",
+		"build": "set NODE_ENV=dev & webpack --progress",
+		"dev": "set NODE_ENV=dev & webpack --watch --progress",
 		"toolkit": "electron ./node_modules/electron-toolkit"
 	},
 	"repository": "https://github.com/imageglass/imageglass-photos",
@@ -38,7 +38,7 @@
 	},
 	"build": {
 		"appId": "com.electron.imageglass-photos",
-		"copyright": "Copyright © 2017 Duong Dieu Phap",
+		"copyright": "Copyright © 2018 Duong Dieu Phap",
 		"productName": "imageglass-photos",
 		"electronVersion": "1.7.9",
 		"asar": true,
