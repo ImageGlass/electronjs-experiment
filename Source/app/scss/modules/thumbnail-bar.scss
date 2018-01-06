@@ -2,7 +2,7 @@
 
 .thumbnail-bar {
 	background-color: rgba($color-thumbnail-bar, 0.7);
-	padding: 0 1rem;
+	padding: 1rem 1rem;
 
 	position: fixed;
 	bottom: 0;
@@ -10,6 +10,49 @@
 	width: 100vw;
 	height: $h-thumbnail-bar;
 	backdrop-filter: blur(30px);
+
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	overflow-x: auto;
+
+	.thumb {
+		width: auto;
+		height: 100%;
+		margin: 0 1rem 0 0;
+		flex: 0 0 auto;
+		display: inline-block;
+		
+		img {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			width: auto;
+			height: 100%;
+
+			opacity: 0.5;
+			transition: all 200ms ease;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&.selected {
+			
+			&> img {
+				opacity: 1;
+				box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3);
+			}
+		}
+
+		&:hover {
+			&> img {
+				opacity: 1;
+				box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3);
+			}
+		}
+	}
 }
 
 

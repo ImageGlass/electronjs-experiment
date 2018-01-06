@@ -809,10 +809,36 @@ body {
 
 .thumbnail-bar {
   background-color: rgba(54, 54, 54, 0.7);
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   position: fixed;
   bottom: 0;
   z-index: 98;
   width: 100vw;
   height: 6rem;
-  backdrop-filter: blur(30px); }
+  backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow-x: auto; }
+  .thumbnail-bar .thumb {
+    width: auto;
+    height: 100%;
+    margin: 0 1rem 0 0;
+    flex: 0 0 auto;
+    display: inline-block; }
+    .thumbnail-bar .thumb img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: 100%;
+      opacity: 0.5;
+      transition: all 200ms ease; }
+    .thumbnail-bar .thumb:last-child {
+      margin-right: 0; }
+    .thumbnail-bar .thumb.selected > img {
+      opacity: 1;
+      box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3); }
+    .thumbnail-bar .thumb:hover > img {
+      opacity: 1;
+      box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3); }

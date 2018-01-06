@@ -16,6 +16,7 @@ var is_update_stage = false;
 var img = "https://www.w3schools.com/css/img_fjords.jpg";
 var index = 0;
 var img_list = [
+	"https://static.pexels.com/photos/33443/pexels-photo.jpg",
 	"https://lh3.googleusercontent.com/gN6iBKP1b2GTXZZoCxhyXiYIAh8QJ_8xzlhEK6csyDadA4GdkEdIEy9Bc8s5jozt1g=w300",
 	"https://cdn.glitch.com/ace687ad-01fb-468f-ba6b-a67283811a0c%2Fcar.svg?1504800679560",
 	"http://www.gravatar.com/avatar/4ff020826d61a6cfd875cb5cc29e5ce6/?default=&s=80",	
