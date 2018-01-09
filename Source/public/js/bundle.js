@@ -522,15 +522,39 @@ var _require = __webpack_require__(0),
 
 var path = "./app/renderer-process/main-window/";
 
-// Initiate functions
-var initComponent = function initComponent(html) {
-  // Append html source code
-  $("#app").append(html);
+var _require2 = __webpack_require__(10),
+    FluentHighlight = _require2.FluentHighlight;
 
-  $(".thumbnail-bar").mousewheel(function (e, delta) {
-    this.scrollLeft -= delta * 40;
-    e.preventDefault();
-  });
+// Initiate functions
+
+
+var initComponent = function initComponent(html) {
+	// Append html source code
+	$("#app").append(html);
+
+	$(".thumbnail-bar").mousewheel(function (e, delta) {
+		this.scrollLeft -= delta * 40;
+		e.preventDefault();
+	});
+
+	// FluentHighlight.applyTo(".thumb")
+
+
+	var original_bg = $(".thumb").css("background-image"),
+	    light_color = "rgba(255,255,255,0.2)",
+	    gradient_size = 150;
+
+	// Basic Demo
+	$(".thumb").mousemove(function (e) {
+		var x = e.pageX - $(this).offset().left;
+		var y = e.pageY - $(this).offset().top;
+
+		var bg_light = "radial-gradient(circle " + gradient_size + "px at " + x + "px " + y + "px, " + light_color + ", rgba(255,255,255,0))";
+
+		$(this).css({ "background-image": bg_light });
+	}).mouseleave(function () {
+		$(this).css({ "background-image": original_bg });
+	});
 };
 
 // Load HTML data
@@ -638,6 +662,58 @@ $("<div></div>").load(path + "views/thumbnail-bar.html", initComponent);
         return ($.event.dispatch || $.event.handle).apply(this, args);
     }
 })(jQuery);
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var FluentHighlight = function () {
+	function FluentHighlight() {
+		_classCallCheck(this, FluentHighlight);
+	}
+
+	_createClass(FluentHighlight, null, [{
+		key: "applyTo",
+		value: function applyTo(selector) {
+			var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+
+			var _option = {
+				original_bg: $(selector).css("background-image"),
+				light_color: "rgba(255,255,255,0.2)",
+				gradient_size: 150
+
+				// update options
+			};_option = Object.assign(_option, option);
+
+			$(selector).mousemove(function (e) {
+				var x = e.pageX - $(this).offset().left;
+				var y = e.pageY - $(this).offset().top;
+
+				var bg_light = "radial-gradient(circle " + _option.gradient_size + "px at " + _option.x + "px " + _option.y + "px, " + _option.light_color + ", rgba(255,255,255,0))";
+
+				$(this).css({ "background-image": bg_light });
+			}).mouseleave(function () {
+				$(this).css({ "background-image": _option.original_bg });
+			});
+		}
+	}]);
+
+	return FluentHighlight;
+}();
+
+exports.default = FluentHighlight;
 
 /***/ })
 /******/ ]);
