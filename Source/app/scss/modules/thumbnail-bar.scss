@@ -2,7 +2,6 @@
 
 .thumbnail-bar {
 	background-color: rgba($color-thumbnail-bar, 0.7);
-	padding: 1rem 1rem;
 
 	position: fixed;
 	bottom: 0;
@@ -19,39 +18,45 @@
 	.thumb {
 		width: auto;
 		height: 100%;
-		margin: 0 1rem 0 0;
+		padding: 1rem 0.5rem;
 		flex: 0 0 auto;
-		display: inline-block;
+		align-items: center;
+		display: inline-flex;
+		opacity: 0.5;
+		transition: all 200ms ease;
 		
 		img {
 			display: block;
 			max-width: 100%;
 			max-height: 100%;
 			width: auto;
-			height: 100%;
-
-			opacity: 0.5;
-			transition: all 200ms ease;
+			height: auto;
 		}
 
+		&:first-child {
+			padding-left: 1rem;
+		}
 		&:last-child {
-			margin-right: 0;
-		}
-
-		&.selected {
-			
-			&> img {
-				opacity: 1;
-				box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3);
-			}
+			padding-right: 1rem;
 		}
 
 		&:hover {
-			&> img {
-				opacity: 1;
-				box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3);
+			opacity: 1;
+			background-color: rgba(#fff, 0.1);
+			box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3), inset 0 0 100px 0 rgba(0, 0, 0, 0.3);
+		}
+
+		&.selected {
+			opacity: 1;
+			background-color: rgba(#fff, 0.1);
+			box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.4);
+
+			&:hover {
+				background-color: rgba(#fff, 0.2);
+				box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.4);
 			}
 		}
+
 	}
 }
 

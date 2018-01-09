@@ -809,7 +809,6 @@ body {
 
 .thumbnail-bar {
   background-color: rgba(54, 54, 54, 0.7);
-  padding: 1rem 1rem;
   position: fixed;
   bottom: 0;
   z-index: 98;
@@ -823,22 +822,30 @@ body {
   .thumbnail-bar .thumb {
     width: auto;
     height: 100%;
-    margin: 0 1rem 0 0;
+    padding: 1rem 0.5rem;
     flex: 0 0 auto;
-    display: inline-block; }
+    align-items: center;
+    display: inline-flex;
+    opacity: 0.5;
+    transition: all 200ms ease; }
     .thumbnail-bar .thumb img {
       display: block;
       max-width: 100%;
       max-height: 100%;
       width: auto;
-      height: 100%;
-      opacity: 0.5;
-      transition: all 200ms ease; }
+      height: auto; }
+    .thumbnail-bar .thumb:first-child {
+      padding-left: 1rem; }
     .thumbnail-bar .thumb:last-child {
-      margin-right: 0; }
-    .thumbnail-bar .thumb.selected > img {
+      padding-right: 1rem; }
+    .thumbnail-bar .thumb:hover {
       opacity: 1;
-      box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3); }
-    .thumbnail-bar .thumb:hover > img {
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3), inset 0 0 100px 0 rgba(0, 0, 0, 0.3); }
+    .thumbnail-bar .thumb.selected {
       opacity: 1;
-      box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.3); }
+      background-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.4); }
+      .thumbnail-bar .thumb.selected:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.4); }
