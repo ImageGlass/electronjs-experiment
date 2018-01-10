@@ -5,7 +5,7 @@
 const { ipcRenderer, remote } = require("electron")
 const path = "./app/renderer-process/main-window/"
 
-import { FluentLightingEffect } from "../modules/fluent-design"
+import { FluentUI } from "../modules/fluent-ui"
 
 
 // Minimize button click event
@@ -46,7 +46,7 @@ const initComponent = (html) => {
 	$("#app").append(html)
 
 	// apply Fluent Design effect
-	FluentLightingEffect.applyTo(".title-control")
+	FluentUI.applyTo(".title-control")
 
 
 	if (remote.BrowserWindow.getFocusedWindow().isMaximized()) {

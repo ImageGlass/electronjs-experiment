@@ -7,7 +7,7 @@ require("../../../../public/js/vendors/jquery.mousewheel.js")
 const { ipcRenderer, remote } = require("electron")
 const path = "./app/renderer-process/main-window/"
 
-import { FluentLightingEffect } from "../modules/fluent-design"
+import { FluentUI } from "../modules/fluent-ui"
 
 
 // Initiate functions
@@ -22,11 +22,12 @@ const initComponent = (html) => {
 
 	
 	// apply Fluent Design effect
-	FluentLightingEffect.applyTo(".thumb")
+	FluentUI.applyTo(".thumb")
 
-	FluentLightingEffect.applyTo(".thumbnail-bar", {
+	FluentUI.applyTo(".thumbnail-bar", {
 		light_color: "rgba(255,255,255,0.1)",
-		gradient_size: 450
+		light_effect_size: 450,
+		click_effect_enable: false
 	})
 	
 

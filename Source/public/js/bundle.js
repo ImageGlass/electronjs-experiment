@@ -84,43 +84,128 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**********************************************
- * Fluent Design Lighting Effect
- **********************************************/
-var FluentLightingEffect = exports.FluentLightingEffect = function () {
-	function FluentLightingEffect() {
-		_classCallCheck(this, FluentLightingEffect);
+/*
+Fluent Design Lighting Effect, v0.1
+https://github.com/d2phap/fluent-ui
+
+MIT License
+Copyright (c) 2018 Duong Dieu Phap
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+var FluentUI = exports.FluentUI = function () {
+	function FluentUI() {
+		_classCallCheck(this, FluentUI);
 	}
 
-	_createClass(FluentLightingEffect, null, [{
+	_createClass(FluentUI, null, [{
+		key: "info",
+		value: function info() {
+			return {
+				"version": "0.1",
+				"author": "Duong Dieu Phap",
+				"url": "https://github.com/d2phap/fluent-ui"
+			};
+		}
+	}, {
 		key: "applyTo",
 		value: function applyTo(selector) {
-			var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+			var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-			// console.log("hello")
 
-			var _option = {
+			var is_pressed = false;
+
+			var _options = {
 				original_bg: $(selector).css("background-image"),
 				light_color: "rgba(255,255,255,0.15)",
-				gradient_size: $(selector).outerWidth()
+				light_effect_size: $(selector).outerWidth(),
+				click_effect_enable: true,
+				click_effect_size: 70
 
 				// update options
-			};_option = Object.assign(_option, option);
+			};_options = Object.assign(_options, options);
+
+			function drawEffect($element, e) {
+				var css_light_effect = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+
+				var bg_light = void 0;
+
+				if (css_light_effect === null) {
+					var x = e.pageX - $element.offset().left;
+					var y = e.pageY - $element.offset().top;
+
+					bg_light = "radial-gradient(circle " + _options.light_effect_size + "px at " + x + "px " + y + "px, " + _options.light_color + ", rgba(255,255,255,0))";
+				} else {
+					bg_light = css_light_effect;
+				}
+
+				$element.css({ "background-image": bg_light });
+			}
+
+			function clearEffect($element) {
+				$element.css({ "background-image": _options.original_bg });
+			}
 
 			$(selector).mousemove(function (e) {
-				var x = e.pageX - $(this).offset().left;
-				var y = e.pageY - $(this).offset().top;
 
-				var bg_light = "radial-gradient(circle " + _option.gradient_size + "px at " + x + "px " + y + "px, " + _option.light_color + ", rgba(255,255,255,0))";
+				if (_options.click_effect_enable && is_pressed) {
 
-				$(this).css({ "background-image": bg_light });
-			}).mouseleave(function () {
-				$(this).css({ "background-image": _option.original_bg });
+					var x = e.pageX - $(this).offset().left;
+					var y = e.pageY - $(this).offset().top;
+
+					var css_light_effect = "radial-gradient(circle " + _options.light_effect_size + "px at " + x + "px " + y + "px, " + _options.light_color + ", rgba(255,255,255,0)), radial-gradient(circle " + _options.click_effect_size + "px at " + x + "px " + y + "px, rgba(255,255,255,0), " + _options.light_color + ", rgba(255,255,255,0), rgba(255,255,255,0))";
+
+					drawEffect($(this), e, css_light_effect);
+				} else {
+					drawEffect($(this), e);
+				}
 			});
+
+			$(selector).mouseleave(function () {
+				is_pressed = false;
+				clearEffect($(this));
+			});
+
+			// Click effect
+			if (_options.click_effect_enable) {
+
+				$(selector).mousedown(function (e) {
+					is_pressed = true;
+
+					var x = e.pageX - $(this).offset().left;
+					var y = e.pageY - $(this).offset().top;
+
+					var css_light_effect = "radial-gradient(circle " + _options.light_effect_size + "px at " + x + "px " + y + "px, " + _options.light_color + ", rgba(255,255,255,0)), radial-gradient(circle " + _options.click_effect_size + "px at " + x + "px " + y + "px, rgba(255,255,255,0), " + _options.light_color + ", rgba(255,255,255,0), rgba(255,255,255,0))";
+
+					drawEffect($(this), e, css_light_effect);
+				});
+
+				$(selector).mouseup(function (e) {
+					is_pressed = false;
+					drawEffect($(this), e);
+				});
+			}
 		}
 	}]);
 
-	return FluentLightingEffect;
+	return FluentUI;
 }();
 
 /***/ }),
@@ -218,7 +303,7 @@ ipcRenderer.on("mainWindow_unmaximize", function (e, arg) {
 "use strict";
 
 
-var _fluentDesign = __webpack_require__(1);
+var _fluentUi = __webpack_require__(1);
 
 /* ----------------------------------------------------------
 * Window Title Component
@@ -259,7 +344,7 @@ var initComponent = function initComponent(html) {
 	$("#app").append(html);
 
 	// apply Fluent Design effect
-	_fluentDesign.FluentLightingEffect.applyTo(".title-control");
+	_fluentUi.FluentUI.applyTo(".title-control");
 
 	if (remote.BrowserWindow.getFocusedWindow().isMaximized()) {
 		$(".window-title").addClass("window-restore");
@@ -282,7 +367,7 @@ $("<div></div>").load(path + "views/window-title.html", initComponent);
 "use strict";
 
 
-var _fluentDesign = __webpack_require__(1);
+var _fluentUi = __webpack_require__(1);
 
 /* ----------------------------------------------------------
 * Toolbar Component
@@ -300,9 +385,10 @@ var initComponent = function initComponent(html) {
 	$("#app").append(html);
 
 	// apply Fluent Design effect
-	_fluentDesign.FluentLightingEffect.applyTo(".toolbar", {
+	_fluentUi.FluentUI.applyTo(".toolbar", {
 		light_color: "rgba(255,255,255,0.1)",
-		gradient_size: 450
+		light_effect_size: 450,
+		click_effect_enable: false
 	});
 };
 
@@ -577,7 +663,7 @@ $("<div></div>").load(path + "views/viewer.html", initComponent);
 "use strict";
 
 
-var _fluentDesign = __webpack_require__(1);
+var _fluentUi = __webpack_require__(1);
 
 /* ----------------------------------------------------------
 * Thumbnail bar Component
@@ -602,11 +688,12 @@ var initComponent = function initComponent(html) {
 	});
 
 	// apply Fluent Design effect
-	_fluentDesign.FluentLightingEffect.applyTo(".thumb");
+	_fluentUi.FluentUI.applyTo(".thumb");
 
-	_fluentDesign.FluentLightingEffect.applyTo(".thumbnail-bar", {
+	_fluentUi.FluentUI.applyTo(".thumbnail-bar", {
 		light_color: "rgba(255,255,255,0.1)",
-		gradient_size: 450
+		light_effect_size: 450,
+		click_effect_enable: false
 	});
 };
 

@@ -5,7 +5,7 @@
 const { ipcRenderer, remote } = require("electron")
 const path = "./app/renderer-process/main-window/"
 
-import { FluentLightingEffect } from "../modules/fluent-design"
+import { FluentUI } from "../modules/fluent-ui"
 
 // Initiate functions
 const initComponent = (html) => {
@@ -13,9 +13,10 @@ const initComponent = (html) => {
 	$("#app").append(html)
 
 	// apply Fluent Design effect
-	FluentLightingEffect.applyTo(".toolbar", {
+	FluentUI.applyTo(".toolbar", {
 		light_color: "rgba(255,255,255,0.1)",
-		gradient_size: 450
+		light_effect_size: 450,
+		click_effect_enable: false
 	})
 
 }
