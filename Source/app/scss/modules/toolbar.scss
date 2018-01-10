@@ -5,7 +5,7 @@
 	padding: 0 1rem;
 
 	position: sticky;
-	top: $h-window-title;
+	top: calc(#{$h-window-title} - 1px);
 	z-index: 99;
 	width: 100vw;
 	height: $h-toolbar;

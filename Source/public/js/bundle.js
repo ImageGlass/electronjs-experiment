@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,7 +76,61 @@ module.exports = require("electron");
 "use strict";
 
 
-var _app = __webpack_require__(2);
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**********************************************
+ * Fluent Design Lighting Effect
+ **********************************************/
+var FluentLightingEffect = exports.FluentLightingEffect = function () {
+	function FluentLightingEffect() {
+		_classCallCheck(this, FluentLightingEffect);
+	}
+
+	_createClass(FluentLightingEffect, null, [{
+		key: "applyTo",
+		value: function applyTo(selector) {
+			var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+			console.log("hello static class");
+
+			var _option = {
+				original_bg: $(selector).css("background-image"),
+				light_color: "rgba(255,255,255,0.2)",
+				gradient_size: $(selector).outerWidth()
+
+				// update options
+			};_option = Object.assign(_option, option);
+
+			$(selector).mousemove(function (e) {
+				var x = e.pageX - $(this).offset().left;
+				var y = e.pageY - $(this).offset().top;
+
+				var bg_light = "radial-gradient(circle " + _option.gradient_size + "px at " + x + "px " + y + "px, " + _option.light_color + ", rgba(255,255,255,0))";
+
+				$(this).css({ "background-image": bg_light });
+			}).mouseleave(function () {
+				$(this).css({ "background-image": _option.original_bg });
+			});
+		}
+	}]);
+
+	return FluentLightingEffect;
+}();
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _app = __webpack_require__(3);
 
 var _app2 = _interopRequireDefault(_app);
 
@@ -99,16 +153,16 @@ console.log(remote.getGlobal("author"));
 $("html").addClass(process.platform);
 
 // add Main window
-__webpack_require__(3);
+__webpack_require__(4);
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -119,22 +173,22 @@ __webpack_require__(3);
 * ----------------------------------------------------------*/
 
 // Browser Window Events
-__webpack_require__(4);
-
-// Add Window Title component
 __webpack_require__(5);
 
-// Add Toolbar component
+// Add Window Title component
 __webpack_require__(6);
 
-// Add Viewer bar component
+// Add Toolbar component
 __webpack_require__(7);
 
-// Add Thumbnail bar component
+// Add Viewer bar component
 __webpack_require__(8);
 
+// Add Thumbnail bar component
+__webpack_require__(9);
+
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -158,11 +212,13 @@ ipcRenderer.on("mainWindow_unmaximize", function (e, arg) {
 });
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var _fluentDesign = __webpack_require__(1);
 
 /* ----------------------------------------------------------
 * Window Title Component
@@ -202,6 +258,9 @@ var initComponent = function initComponent(html) {
 	// Append html source code
 	$("#app").append(html);
 
+	// apply Fluent Design effect
+	_fluentDesign.FluentLightingEffect.applyTo(".title-control");
+
 	if (remote.BrowserWindow.getFocusedWindow().isMaximized()) {
 		$(".window-title").addClass("window-restore");
 	} else {
@@ -217,11 +276,13 @@ var initComponent = function initComponent(html) {
 $("<div></div>").load(path + "views/window-title.html", initComponent);
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var _fluentDesign = __webpack_require__(1);
 
 /* ----------------------------------------------------------
 * Toolbar Component
@@ -237,13 +298,19 @@ var path = "./app/renderer-process/main-window/";
 var initComponent = function initComponent(html) {
 	// Append html source code
 	$("#app").append(html);
+
+	// apply Fluent Design effect
+	_fluentDesign.FluentLightingEffect.applyTo(".toolbar", {
+		light_color: "rgba(255,255,255,0.1)",
+		gradient_size: 450
+	});
 };
 
 // Load HTML data
 $("<div></div>").load(path + "views/toolbar.html", initComponent);
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -504,17 +571,19 @@ var initComponent = function initComponent(html) {
 $("<div></div>").load(path + "views/viewer.html", initComponent);
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var _fluentDesign = __webpack_require__(1);
+
 /* ----------------------------------------------------------
 * Thumbnail bar Component
 * ----------------------------------------------------------*/
 // Plugin for horizontal scrolling
-__webpack_require__(9);
+__webpack_require__(10);
 
 var _require = __webpack_require__(0),
     ipcRenderer = _require.ipcRenderer,
@@ -522,12 +591,7 @@ var _require = __webpack_require__(0),
 
 var path = "./app/renderer-process/main-window/";
 
-var _require2 = __webpack_require__(10),
-    FluentHighlight = _require2.FluentHighlight;
-
 // Initiate functions
-
-
 var initComponent = function initComponent(html) {
 	// Append html source code
 	$("#app").append(html);
@@ -537,23 +601,12 @@ var initComponent = function initComponent(html) {
 		e.preventDefault();
 	});
 
-	// FluentHighlight.applyTo(".thumb")
+	// apply Fluent Design effect
+	_fluentDesign.FluentLightingEffect.applyTo(".thumb");
 
-
-	var original_bg = $(".thumb").css("background-image"),
-	    light_color = "rgba(255,255,255,0.2)",
-	    gradient_size = 150;
-
-	// Basic Demo
-	$(".thumb").mousemove(function (e) {
-		var x = e.pageX - $(this).offset().left;
-		var y = e.pageY - $(this).offset().top;
-
-		var bg_light = "radial-gradient(circle " + gradient_size + "px at " + x + "px " + y + "px, " + light_color + ", rgba(255,255,255,0))";
-
-		$(this).css({ "background-image": bg_light });
-	}).mouseleave(function () {
-		$(this).css({ "background-image": original_bg });
+	_fluentDesign.FluentLightingEffect.applyTo(".thumbnail-bar", {
+		light_color: "rgba(255,255,255,0.1)",
+		gradient_size: 450
 	});
 };
 
@@ -561,7 +614,7 @@ var initComponent = function initComponent(html) {
 $("<div></div>").load(path + "views/thumbnail-bar.html", initComponent);
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -662,58 +715,6 @@ $("<div></div>").load(path + "views/thumbnail-bar.html", initComponent);
         return ($.event.dispatch || $.event.handle).apply(this, args);
     }
 })(jQuery);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var FluentHighlight = function () {
-	function FluentHighlight() {
-		_classCallCheck(this, FluentHighlight);
-	}
-
-	_createClass(FluentHighlight, null, [{
-		key: "applyTo",
-		value: function applyTo(selector) {
-			var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-
-			var _option = {
-				original_bg: $(selector).css("background-image"),
-				light_color: "rgba(255,255,255,0.2)",
-				gradient_size: 150
-
-				// update options
-			};_option = Object.assign(_option, option);
-
-			$(selector).mousemove(function (e) {
-				var x = e.pageX - $(this).offset().left;
-				var y = e.pageY - $(this).offset().top;
-
-				var bg_light = "radial-gradient(circle " + _option.gradient_size + "px at " + _option.x + "px " + _option.y + "px, " + _option.light_color + ", rgba(255,255,255,0))";
-
-				$(this).css({ "background-image": bg_light });
-			}).mouseleave(function () {
-				$(this).css({ "background-image": _option.original_bg });
-			});
-		}
-	}]);
-
-	return FluentHighlight;
-}();
-
-exports.default = FluentHighlight;
 
 /***/ })
 /******/ ]);

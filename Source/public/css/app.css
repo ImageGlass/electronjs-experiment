@@ -680,9 +680,9 @@ body {
     flex: 0 0 auto;
     border-radius: 0 0 1px 1px; }
     .window-title > .title-control:hover {
-      background-color: #434343; }
+      background-color: rgba(67, 67, 67, 0.2); }
     .window-title > .title-control:active {
-      background-color: #292929; }
+      background-color: rgba(41, 41, 41, 0.2); }
     .window-title > .title-control::before, .window-title > .title-control.close::after {
       content: "";
       display: block;
@@ -786,7 +786,7 @@ body {
   background-color: rgba(54, 54, 54, 0.7);
   padding: 0 1rem;
   position: sticky;
-  top: 2.5rem;
+  top: calc(2.5rem - 1px);
   z-index: 99;
   width: 100vw;
   height: 3rem;

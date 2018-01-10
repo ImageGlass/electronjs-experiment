@@ -31,10 +31,10 @@ $margin-for-resizing: 0.1429rem;
 		border-radius: 0 0 1px 1px;
 
 		&:hover {
-			background-color: lighten($color-toolbar, 5);
+			background-color: rgba(lighten($color-toolbar, 5), 0.2);
 		}
 		&:active {
-			background-color: darken($color-toolbar, 5);
+			background-color: rgba(darken($color-toolbar, 5), 0.2);
 		}
 
 		&::before,

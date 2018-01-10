@@ -6,7 +6,9 @@ require("../../../../public/js/vendors/jquery.mousewheel.js")
 
 const { ipcRenderer, remote } = require("electron")
 const path = "./app/renderer-process/main-window/"
-const { FluentHighlight } = require("../modules/fluent-highlight")
+
+import { FluentLightingEffect } from "../modules/fluent-design"
+
 
 // Initiate functions
 const initComponent = (html) => {
@@ -19,40 +21,14 @@ const initComponent = (html) => {
 	});
 
 	
-	// FluentHighlight.applyTo(".thumb")
+	// apply Fluent Design effect
+	FluentLightingEffect.applyTo(".thumb")
 
-	
-
-
-
-
-
-
-	var original_bg = $(".thumb").css("background-image"),
-		light_color = "rgba(255,255,255,0.2)",
-		gradient_size = 150;
-
-	// Basic Demo
-	$(".thumb").mousemove(function(e) {
-		let x = e.pageX - $(this).offset().left;
-		let y = e.pageY - $(this).offset().top;
-
-		let bg_light = `radial-gradient(circle ${gradient_size}px at ${x}px ${y}px, ${light_color}, rgba(255,255,255,0))`
-
-		$(this).css({ "background-image": bg_light });
+	FluentLightingEffect.applyTo(".thumbnail-bar", {
+		light_color: "rgba(255,255,255,0.1)",
+		gradient_size: 450
 	})
-	.mouseleave(function() {
-		$(this).css({ "background-image": original_bg });
-	});
-
-
-
-
-
-
-
-
-
+	
 
 
 }
