@@ -786,7 +786,7 @@ body {
   background-color: rgba(54, 54, 54, 0.7);
   padding: 0 1rem;
   position: sticky;
-  top: calc(2.5rem - 1px);
+  top: 2.5rem;
   z-index: 99;
   width: 100vw;
   height: 3rem;

@@ -4,11 +4,11 @@
 export class FluentLightingEffect {
 
 	static applyTo(selector, option = {}) {
-		console.log("hello static class")
+		// console.log("hello")
 
 		let _option = {
 			original_bg: $(selector).css("background-image"),
-			light_color: "rgba(255,255,255,0.2)",
+			light_color: "rgba(255,255,255,0.15)",
 			gradient_size: $(selector).outerWidth(),
 		}
 

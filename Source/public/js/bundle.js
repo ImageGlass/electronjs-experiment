@@ -97,11 +97,11 @@ var FluentLightingEffect = exports.FluentLightingEffect = function () {
 		value: function applyTo(selector) {
 			var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-			console.log("hello static class");
+			// console.log("hello")
 
 			var _option = {
 				original_bg: $(selector).css("background-image"),
-				light_color: "rgba(255,255,255,0.2)",
+				light_color: "rgba(255,255,255,0.15)",
 				gradient_size: $(selector).outerWidth()
 
 				// update options
