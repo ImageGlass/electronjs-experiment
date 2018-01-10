@@ -5,8 +5,10 @@
 @import "base/reboot";
 @import "base/ultilities";
 
+// 2. Components
+@import "components/button";
 
-// 2. Modules
+// 3. Modules
 @import "modules/layout";
 @import "modules/window-title";
 @import "modules/toolbar";
