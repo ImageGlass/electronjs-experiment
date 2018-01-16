@@ -3,10 +3,19 @@
 body {
 	overflow: hidden;
 }
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 #app {
 	min-height: 100vh;
 	user-select: none;
 	cursor: default;
+	animation: fadein 0.5s; /* Smoother startup */
 
 	display: grid;
 	grid-template-rows: 0 0 $h-viewer 0;

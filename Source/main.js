@@ -20,6 +20,7 @@ function createWindow() {
 		width: 1200,
 		height: 700,
 		frame: false,
+		backgroundColor: "#282828",
 		webPreferences: {
 			experimentalFeatures: true
 		}
